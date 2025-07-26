@@ -11,12 +11,12 @@
 <body ng-controller="CrudController">
     <div class="container">
         <h1>Leads Management System</h1>
-        
+
         <!-- Alert Messages -->
         <div ng-show="message.text" class="alert" ng-class="{'alert-success': message.type === 'success', 'alert-error': message.type === 'error'}">
             {{message.text}}
         </div>
-        
+
         <!-- Add/Edit User Form -->
         <div class="form-section">
             <h2>{{isEditing ? 'Edit User' : 'Add New User'}}</h2>
@@ -28,7 +28,7 @@
                         Name is required
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" ng-model="currentUser.email" required>
@@ -36,17 +36,17 @@
                         Valid email is required
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="phone">Phone:</label>
                     <input type="text" id="phone" name="phone" ng-model="currentUser.phone">
                 </div>
-                
+
                 <div class="form-group">
                     <label for="department">Department:</label>
                     <input type="text" id="department" name="department" ng-model="currentUser.department">
                 </div>
-                
+
                 <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">
                     {{isEditing ? 'Update User' : 'Add User'}}
                 </button>
@@ -55,12 +55,12 @@
                 </button>
             </form>
         </div>
-        
+
         <!-- Search Box -->
         <div class="search-box">
             <input type="text" ng-model="searchText" placeholder="Search users..." />
         </div>
-        
+
         <!-- Users Table -->
         <div class="table-container">
             <h2>Users List ({{filteredUsers.length}} users)</h2>
@@ -93,7 +93,7 @@
                 <p>No users found. Add some users to get started!</p>
             </div>
         </div>
-        
+
         <!-- Delete Confirmation Modal -->
         <div class="modal" ng-class="{'show': showDeleteModal}">
             <div class="modal-content">

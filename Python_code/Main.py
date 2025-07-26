@@ -27,10 +27,10 @@ def Main():
 
     LeadsManager.Remove(inventory, 2)
     print("After Removing Item 2 Agian:", inventory)
-    
+
     LeadsManager.Update(inventory, 2,{"name":"yoni ", "last_name ": "golan", "deal-id": 1, "status": "open", "est_value": 100000})
     print("After Updating Item 2 When removed :", inventory)
 
-    
+
 
 Main()
