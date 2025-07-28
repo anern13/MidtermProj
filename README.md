@@ -1,8 +1,3 @@
-# MidtermProj
-
-docker build -t leads:latest . 
-docker run -p 5000:5000 leads
-
 # Midterm Project – DevOps Deployment
 
 Welcome to the **Midterm DevOps Project** repository for DeployNova!  
@@ -26,19 +21,17 @@ This project showcases a Python-based application containerized with Docker and 
 
 ## 📁 Project Structure
 
+```
 .
 ├── app/
-│ ├── main.py
-│ ├── functions.py
-│ └── templates/
-│ └── index.html
+│   ├── main.py
+│   ├── functions.py
+│   └── templates/
+│       └── index.html
 ├── Dockerfile
 ├── requirements.txt
 └── Dockerrun.aws.json (used for deployment)
-
-yaml
-Copy
-Edit
+```
 
 ---
 
@@ -55,38 +48,43 @@ COPY . /app
 RUN pip install -r requirements.txt
 EXPOSE 8080
 CMD ["python", "app/main.py"]
-Flask Run Command
+```
+
+### Flask Run Command
+
 Your Flask app must start like this to work in Elastic Beanstalk:
 
-python
-Copy
-Edit
+```python
 app.run(host="0.0.0.0", port=8080)
-🚀 AWS Deployment (Manual via Console)
-1. AWS ECR
-Created a private repository in Elastic Container Registry: midterm-proj
+```
 
-Built and pushed the Docker image:
+---
 
-bash
-Copy
-Edit
+## 🚀 AWS Deployment (Manual via Console)
+
+### 1. AWS ECR
+
+- Created a private repository in **Elastic Container Registry**: `midterm-proj`
+- Built and pushed the Docker image:
+
+```bash
 docker build -t midterm-proj .
 docker tag midterm-proj:latest 495307862605.dkr.ecr.us-east-1.amazonaws.com/midterm-proj:latest
 docker push 495307862605.dkr.ecr.us-east-1.amazonaws.com/midterm-proj:latest
-2. Elastic Beanstalk (EB)
-Chose deployment via AWS Console
+```
 
-Platform: Docker running on 64bit Amazon Linux 2
+---
 
-Configuration Preset: Single instance (free tier eligible)
+### 2. Elastic Beanstalk (EB)
 
-Deployed using a Dockerrun.aws.json file zipped alone in a .zip
+- Chose deployment via **AWS Console**
+- Platform: **Docker running on 64bit Amazon Linux 2**
+- Configuration Preset: **Single instance (free tier eligible)**
+- Deployed using a `Dockerrun.aws.json` file zipped alone in a `.zip`
 
-📄 Dockerrun.aws.json
-json
-Copy
-Edit
+#### 📄 Dockerrun.aws.json
+
+```json
 {
   "AWSEBDockerrunVersion": 1,
   "Image": {
@@ -99,11 +97,45 @@ Edit
     }
   ]
 }
-Uploaded via Upload and Deploy
+```
 
-Resulting public URL:
+- Uploaded via **Upload and Deploy**
+- Resulting public URL:
+  ```
+  http://<your-environment>.elasticbeanstalk.com
+  ```
 
-cpp
-Copy
-Edit
-http://<your-environment>.elasticbeanstalk.com
+---
+
+## ⚠️ Troubleshooting & Lessons Learned
+
+- ❌ Attempting "High Availability" failed due to IAM sandbox limits on Auto Scaling
+- ✅ Switching to **Single Instance** solved the issue
+- ❌ Initial 503 errors appeared due to Flask listening on port 5000 instead of 8080
+- ✅ Fixed by:
+  - Updating Flask to listen on `port=8080`
+  - Rebuilding Docker image
+  - Using correct `Dockerrun.aws.json`
+- ❌ EB errors about version = 3 fixed by using `"AWSEBDockerrunVersion": 1`
+
+---
+
+## ✅ Final Deliverables
+
+- ✅ Python app with modular logic
+- ✅ Web UI using Flask
+- ✅ Dockerized (with Dockerfile)
+- ✅ Image pushed to AWS ECR
+- ✅ Successfully deployed using AWS Elastic Beanstalk
+
+---
+
+## 🧠 Developer Notes
+
+This project was built and deployed manually for educational and demonstration purposes, simulating a DevOps pipeline using containerization and cloud-native deployment tools.
+
+---
+
+## 📬 Contact
+
+**Developer**: Aner & Ameer  
