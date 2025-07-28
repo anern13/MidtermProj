@@ -23,11 +23,14 @@ This project showcases a Python-based application containerized with Docker and 
 
 ```
 .
-├── app/
-│   ├── main.py
-│   ├── functions.py
-│   └── templates/
-│       └── index.html
+├── Python_code/
+│   ├── API.py
+│   ├── LeadsManager.py
+│   ├── Main.py
+├── Website/
+│   ├── controller.js
+│   ├── index.html
+│   ├── leadsService.js
 ├── Dockerfile
 ├── requirements.txt
 └── Dockerrun.aws.json (used for deployment)
