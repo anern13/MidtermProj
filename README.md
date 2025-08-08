@@ -123,13 +123,6 @@ aws cloudformation describe-stacks \
   --query "Stacks[0].Outputs[?OutputKey=='LoadBalancerDNSName'].OutputValue" \
   --output text
 ```
-or
-
-```bash
-ALB=$(aws cloudformation describe-stacks   --stack-name leads-manager-sandbox-app   --query "Stacks[0].Outputs[?OutputKey=='LoadBalancerDNSName'].OutputValue"   --output text)
-echo "http://$ALB"
-```
-
 Open in browser → UI & API should work.
 
 ---
