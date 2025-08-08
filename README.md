@@ -110,7 +110,7 @@ aws cloudformation deploy \
   --template-file cloudformation.yml
 ```
 
-Wait **2–4 minutes** for `git clone → docker build → docker run`.
+Wait **2–4 minutes**
 
 ---
 
