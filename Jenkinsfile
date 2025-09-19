@@ -15,9 +15,9 @@ pipeline {
       }
     }
 
-    stage('') {
+    stage('mail') {
       steps {
-        mail(subject: 'anern13@gmail.com', body: 'pipeline finished ', to: 'anern13@gmail.com')
+        mail(subject: 'pipeline finished', body: 'pipeline finished', to: 'anern13@gmail.com', from: 'jenkins')
       }
     }
 
