@@ -16,6 +16,9 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 COPY Python_code/ ./Python_code/
 COPY Website/ ./Website/
 
+RUN mkdir -p /app/data
+ENV LEADS_DATA_FILE=/app/data/leads_data.json
+
 # Flask will serve both frontend (templates/static) and API on 0.0.0.0:5000
 EXPOSE 5000
 CMD ["python3", "Python_code/API.py"]
